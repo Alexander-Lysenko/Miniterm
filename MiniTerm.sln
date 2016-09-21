@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presenters", "Presenters\Pr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic_DataPicker", "Logic_DataPicker\Logic_DataPicker.csproj", "{5B52F175-1911-42C9-9E1A-A46690A05131}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComPort", "ComPort\ComPort.csproj", "{84A93A96-B074-4085-B862-7B0C7FE42FF1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{5B52F175-1911-42C9-9E1A-A46690A05131}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B52F175-1911-42C9-9E1A-A46690A05131}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B52F175-1911-42C9-9E1A-A46690A05131}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84A93A96-B074-4085-B862-7B0C7FE42FF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84A93A96-B074-4085-B862-7B0C7FE42FF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84A93A96-B074-4085-B862-7B0C7FE42FF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84A93A96-B074-4085-B862-7B0C7FE42FF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
