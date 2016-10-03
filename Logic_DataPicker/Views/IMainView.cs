@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Presenters;
+﻿using Presenters;
 
 namespace Logic_DataPicker
 {

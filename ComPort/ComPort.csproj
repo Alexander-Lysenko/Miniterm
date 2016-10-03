@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5B52F175-1911-42C9-9E1A-A46690A05131}</ProjectGuid>
+    <ProjectGuid>{84A93A96-B074-4085-B862-7B0C7FE42FF1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Logic_DataPicker</RootNamespace>
-    <AssemblyName>Logic_DataPicker</AssemblyName>
+    <RootNamespace>ComPort</RootNamespace>
+    <AssemblyName>ComPort</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,19 +35,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Presenters\MainPresenter.cs" />
-    <Compile Include="Views\IMainView.cs" />
+    <Compile Include="ComPort.cs" />
+    <Compile Include="IComConnect.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ComPort\ComPort.csproj">
-      <Project>{84a93a96-b074-4085-b862-7b0c7fe42ff1}</Project>
-      <Name>ComPort</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Presenters\Presenters.csproj">
-      <Project>{3226a188-b061-444e-b729-bf2bdebaebe8}</Project>
-      <Name>Presenters</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

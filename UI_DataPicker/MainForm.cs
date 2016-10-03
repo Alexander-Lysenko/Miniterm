@@ -1,10 +1,4 @@
 ﻿using Logic_DataPicker;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace UI_DataPicker
@@ -15,7 +9,6 @@ namespace UI_DataPicker
         {
             InitializeComponent();
         }
-
 
         public int DeviceNumber
         {
@@ -42,7 +35,6 @@ namespace UI_DataPicker
             YOutputLabel.Text = OutputY;
             ModeLabel.Text = Mode;
             TimeStatusLabel.Text = Time;
-
         }
     }
 }

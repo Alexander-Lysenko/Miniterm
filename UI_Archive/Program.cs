@@ -14,7 +14,7 @@ namespace UI_Archive
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GraphicForm());
+            Application.Run(new AuthorizationForm());
         }
     }
 }

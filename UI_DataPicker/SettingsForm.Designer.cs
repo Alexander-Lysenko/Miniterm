@@ -40,8 +40,8 @@
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.CancelButton = new System.Windows.Forms.Button();
-            this.SaveButton = new System.Windows.Forms.Button();
+            this.ExitBtn = new System.Windows.Forms.Button();
+            this.SaveBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -183,34 +183,36 @@
             this.textBox2.Size = new System.Drawing.Size(117, 22);
             this.textBox2.TabIndex = 12;
             // 
-            // CancelButton
+            // ExitBtn
             // 
-            this.CancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CancelButton.Location = new System.Drawing.Point(12, 194);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(310, 50);
-            this.CancelButton.TabIndex = 13;
-            this.CancelButton.Text = "Закрыть окно без изменения данных";
-            this.CancelButton.UseVisualStyleBackColor = true;
+            this.ExitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ExitBtn.Location = new System.Drawing.Point(12, 194);
+            this.ExitBtn.Name = "ExitBtn";
+            this.ExitBtn.Size = new System.Drawing.Size(310, 50);
+            this.ExitBtn.TabIndex = 13;
+            this.ExitBtn.Text = "Закрыть окно без изменения данных";
+            this.ExitBtn.UseVisualStyleBackColor = true;
             // 
-            // SaveButton
+            // SaveBtn
             // 
-            this.SaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.SaveButton.Location = new System.Drawing.Point(12, 250);
-            this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(310, 50);
-            this.SaveButton.TabIndex = 14;
-            this.SaveButton.Text = "Сохранить данные и закрыть";
-            this.SaveButton.UseVisualStyleBackColor = true;
+            this.SaveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SaveBtn.Location = new System.Drawing.Point(12, 250);
+            this.SaveBtn.Name = "SaveBtn";
+            this.SaveBtn.Size = new System.Drawing.Size(310, 50);
+            this.SaveBtn.TabIndex = 14;
+            this.SaveBtn.Text = "Сохранить данные и закрыть";
+            this.SaveBtn.UseVisualStyleBackColor = true;
             // 
             // SettingsForm
             // 
+            this.AcceptButton = this.SaveBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.ExitBtn;
             this.ClientSize = new System.Drawing.Size(334, 312);
             this.ControlBox = false;
-            this.Controls.Add(this.SaveButton);
-            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.SaveBtn);
+            this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.comboBox2);
@@ -246,7 +248,7 @@
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button CancelButton;
-        private System.Windows.Forms.Button SaveButton;
+        private System.Windows.Forms.Button ExitBtn;
+        private System.Windows.Forms.Button SaveBtn;
     }
 }

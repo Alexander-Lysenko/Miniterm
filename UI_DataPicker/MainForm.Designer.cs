@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.Status_Bar = new System.Windows.Forms.StatusStrip();
             this.TimeStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.DateStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -287,6 +288,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Status_Bar);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
