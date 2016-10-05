@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using ComPort;
 
 namespace UI_DataPicker
 {
@@ -26,7 +27,7 @@ namespace UI_DataPicker
             set { DateStatusLabel.Text = value; }
         }
 
-        public void SetData(string CurrentTemperature, string Temperature2, 
+        public void SetData(string CurrentTemperature, string Temperature2,
             string TaskTemperature, string txc, string OutputY, string Mode, string Time)
         {
             CurrentTemperatureLabel.Text = CurrentTemperature;
@@ -51,7 +52,21 @@ namespace UI_DataPicker
 
         private void PickerTimer_Tick(object sender, System.EventArgs e)
         {
-            CurrentTemperatureLabel.Text = (new Random().Next()%100).ToString(); 
+
+            try
+            {
+                ComConnect Connection = new ComConnect(ComConnect.GetPortName()[0]);
+                CurrentTemperatureLabel.Text = Connection.ReadData(0x10DA).ToString();
+            }
+            catch (Exception ex)
+            {
+                PickerTimer.Stop();
+                MessageBox.Show(ex.Message);
+            }
+            finally 
+            {
+            }
+
             DateStatusLabel.Text = DateTime.Now.ToShortDateString();
             TimeStatusLabel.Text = DateTime.Now.ToLongTimeString();
         }

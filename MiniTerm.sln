@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI_Archive", "UI_Archive\UI
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComPort", "ComPort\ComPort.csproj", "{84A93A96-B074-4085-B862-7B0C7FE42FF1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileManager", "FileManager\FileManager.csproj", "{31273959-E8C5-4462-941A-0EB147838977}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{84A93A96-B074-4085-B862-7B0C7FE42FF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84A93A96-B074-4085-B862-7B0C7FE42FF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84A93A96-B074-4085-B862-7B0C7FE42FF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31273959-E8C5-4462-941A-0EB147838977}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31273959-E8C5-4462-941A-0EB147838977}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31273959-E8C5-4462-941A-0EB147838977}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31273959-E8C5-4462-941A-0EB147838977}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

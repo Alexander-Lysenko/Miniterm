@@ -4,7 +4,7 @@ using System.IO.Ports;
 
 namespace ComPort
 {
-    public class ComConnect : ComPort.IComConnect
+    public class ComConnect
     {
         private List<ushort> _address = new List<ushort>(){ 
             0x10DA, //Регулируемая температура
@@ -15,6 +15,10 @@ namespace ComPort
             0x101C, //Текущий режим прибора
 
         };
+
+        private byte Head = 0xEE;
+        private byte ErrorMessage = 0x7A;
+        private byte CommandNumber = 4;
         
         private SerialPort _comPort;    
 
@@ -25,18 +29,38 @@ namespace ComPort
             throw new ArgumentNullException("На вашем устройстве нет COM порта");
         }
 
-        public void Connect(string portName, int baudRate) {
+        public ComConnect(string portName, int baudRate) {
             _comPort = new SerialPort(portName, baudRate);
             _comPort.Open();
         }
 
-        public float[] ReceiveData(){
-            
-            return null;
+        public ComConnect(string portName)
+        {
+            _comPort = new SerialPort(portName);
+            _comPort.Open();
         }
 
-        private void write(ushort address) { 
-            
+        private void WriteData(ushort address) {
+            byte N = 0; /*Номер прибора*/
+            byte addrl = (byte)address;
+            byte addrh = (byte)(address >> 8);
+            byte[] request = new byte[]{
+                Head, 
+                (byte)(CommandNumber << 4 | N),
+                addrl,
+                addrh,
+                (byte)(addrl + addrh)
+            };
+            _comPort.Write(request, 0, 5);
+        }
+
+        public int ReadData(ushort address)
+        {
+            WriteData(address);
+            int OneByte = _comPort.ReadByte();
+            if (OneByte == 0x7A)
+                throw new Exception("Команда не распознана");
+            return _comPort.ReadByte() | (_comPort.ReadByte() << 8);
         }
 
         public void Close() {
