@@ -47,9 +47,10 @@
             this.ConfirmBtn.Location = new System.Drawing.Point(355, 418);
             this.ConfirmBtn.Name = "ConfirmBtn";
             this.ConfirmBtn.Size = new System.Drawing.Size(163, 50);
-            this.ConfirmBtn.TabIndex = 0;
+            this.ConfirmBtn.TabIndex = 1;
             this.ConfirmBtn.Text = "Подтвердить";
             this.ConfirmBtn.UseVisualStyleBackColor = true;
+            this.ConfirmBtn.Click += new System.EventHandler(this.ConfirmBtn_Click);
             // 
             // CancelBtn
             // 
@@ -58,9 +59,10 @@
             this.CancelBtn.Location = new System.Drawing.Point(524, 418);
             this.CancelBtn.Name = "CancelBtn";
             this.CancelBtn.Size = new System.Drawing.Size(104, 50);
-            this.CancelBtn.TabIndex = 1;
+            this.CancelBtn.TabIndex = 2;
             this.CancelBtn.Text = "Отмена";
             this.CancelBtn.UseVisualStyleBackColor = true;
+            this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
             // 
             // PasswordTB
             // 
@@ -70,7 +72,7 @@
             this.PasswordTB.Name = "PasswordTB";
             this.PasswordTB.PasswordChar = '●';
             this.PasswordTB.Size = new System.Drawing.Size(138, 47);
-            this.PasswordTB.TabIndex = 2;
+            this.PasswordTB.TabIndex = 0;
             // 
             // label1
             // 
@@ -102,7 +104,7 @@
             this.label6.Location = new System.Drawing.Point(0, 313);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(628, 87);
-            this.label6.TabIndex = 4;
+            this.label6.TabIndex = 3;
             this.label6.Text = "Если закрытие программы делается осознанно, \r\nто пожалуйста, \r\nподтвердите выход " +
     "из программы паролем.";
             // 
@@ -114,7 +116,7 @@
             this.label4.Location = new System.Drawing.Point(0, 107);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(625, 145);
-            this.label4.TabIndex = 2;
+            this.label4.TabIndex = 3;
             this.label4.Text = resources.GetString("label4.Text");
             // 
             // label3
@@ -124,7 +126,7 @@
             this.label3.Location = new System.Drawing.Point(3, 44);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(613, 34);
-            this.label3.TabIndex = 1;
+            this.label3.TabIndex = 3;
             this.label3.Text = "Обнаружена попытка выхода из программы.";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -135,7 +137,7 @@
             this.label2.Location = new System.Drawing.Point(-5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(621, 44);
-            this.label2.TabIndex = 0;
+            this.label2.TabIndex = 3;
             this.label2.Text = "Внимание !";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -153,6 +155,7 @@
             this.Controls.Add(this.ConfirmBtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "LogoutForm";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

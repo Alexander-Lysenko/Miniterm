@@ -14,5 +14,21 @@ namespace UI_DataPicker
         {
             InitializeComponent();
         }
+        public static void ShowForm() 
+        {
+            LogoutForm logoutForm = new LogoutForm();
+            logoutForm.ShowDialog();
+            logoutForm.PasswordTB.Focus();
+        }
+
+        private void ConfirmBtn_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Тип я работаю");
+        }
+
+        private void CancelBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

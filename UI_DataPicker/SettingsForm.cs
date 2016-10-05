@@ -14,5 +14,20 @@ namespace UI_DataPicker
         {
             InitializeComponent();
         }
+        public static void ShowForm()
+        {
+            SettingsForm settingsForm = new SettingsForm();
+            settingsForm.ShowDialog();
+        }
+
+        private void ExitBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SaveBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

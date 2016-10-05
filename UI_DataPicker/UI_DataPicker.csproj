@@ -90,16 +90,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Logic_DataPicker\Logic_DataPicker.csproj">
-      <Project>{5b52f175-1911-42c9-9e1a-a46690a05131}</Project>
-      <Name>Logic_DataPicker</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Presenters\Presenters.csproj">
-      <Project>{3226a188-b061-444e-b729-bf2bdebaebe8}</Project>
-      <Name>Presenters</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

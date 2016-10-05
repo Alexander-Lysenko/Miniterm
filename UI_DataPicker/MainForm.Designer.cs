@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.Status_Bar = new System.Windows.Forms.StatusStrip();
             this.TimeStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -48,6 +49,7 @@
             this.CurrentTemperatureLabel = new System.Windows.Forms.Label();
             this.DeviceNameLabel = new System.Windows.Forms.Label();
             this.DeviceNumberLabel = new System.Windows.Forms.Label();
+            this.PickerTimer = new System.Windows.Forms.Timer(this.components);
             this.Status_Bar.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -97,8 +99,10 @@
             // SettingsTSMI
             // 
             this.SettingsTSMI.Name = "SettingsTSMI";
+            this.SettingsTSMI.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
             this.SettingsTSMI.Size = new System.Drawing.Size(79, 20);
             this.SettingsTSMI.Text = "Настройки";
+            this.SettingsTSMI.Click += new System.EventHandler(this.SettingsTSMI_Click);
             // 
             // label1
             // 
@@ -185,7 +189,6 @@
             // 
             // YOutputLabel
             // 
-            this.YOutputLabel.AutoSize = true;
             this.YOutputLabel.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.YOutputLabel.Location = new System.Drawing.Point(201, 179);
             this.YOutputLabel.Name = "YOutputLabel";
@@ -196,7 +199,6 @@
             // 
             // Temperature2Label
             // 
-            this.Temperature2Label.AutoSize = true;
             this.Temperature2Label.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Temperature2Label.ForeColor = System.Drawing.Color.IndianRed;
             this.Temperature2Label.Location = new System.Drawing.Point(201, 149);
@@ -208,7 +210,6 @@
             // 
             // TXCLabel
             // 
-            this.TXCLabel.AutoSize = true;
             this.TXCLabel.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TXCLabel.ForeColor = System.Drawing.Color.IndianRed;
             this.TXCLabel.Location = new System.Drawing.Point(201, 119);
@@ -220,7 +221,6 @@
             // 
             // TaskTemperatureLabel
             // 
-            this.TaskTemperatureLabel.AutoSize = true;
             this.TaskTemperatureLabel.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TaskTemperatureLabel.Location = new System.Drawing.Point(201, 89);
             this.TaskTemperatureLabel.Name = "TaskTemperatureLabel";
@@ -231,7 +231,6 @@
             // 
             // CurrentTemperatureLabel
             // 
-            this.CurrentTemperatureLabel.AutoSize = true;
             this.CurrentTemperatureLabel.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CurrentTemperatureLabel.ForeColor = System.Drawing.Color.IndianRed;
             this.CurrentTemperatureLabel.Location = new System.Drawing.Point(201, 59);
@@ -265,6 +264,11 @@
             this.DeviceNumberLabel.TabIndex = 14;
             this.DeviceNumberLabel.Text = "№ 15";
             // 
+            // PickerTimer
+            // 
+            this.PickerTimer.Interval = 500;
+            this.PickerTimer.Tick += new System.EventHandler(this.PickerTimer_Tick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -294,6 +298,7 @@
             this.MinimizeBox = false;
             this.Name = "MainForm";
             this.Text = "Минитерм";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Status_Bar.ResumeLayout(false);
             this.Status_Bar.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -324,6 +329,7 @@
         private System.Windows.Forms.Label CurrentTemperatureLabel;
         private System.Windows.Forms.Label DeviceNameLabel;
         private System.Windows.Forms.Label DeviceNumberLabel;
+        private System.Windows.Forms.Timer PickerTimer;
     }
 }
 

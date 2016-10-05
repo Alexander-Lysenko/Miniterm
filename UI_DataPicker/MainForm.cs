@@ -1,13 +1,14 @@
-﻿using Logic_DataPicker;
+﻿using System;
 using System.Windows.Forms;
 
 namespace UI_DataPicker
 {
-    public partial class MainForm : Form, IMainView
+    public partial class MainForm : Form
     {
         public MainForm()
         {
             InitializeComponent();
+            PickerTimer.Start();
         }
 
         public int DeviceNumber
@@ -35,6 +36,24 @@ namespace UI_DataPicker
             YOutputLabel.Text = OutputY;
             ModeLabel.Text = Mode;
             TimeStatusLabel.Text = Time;
+        }
+
+        private void SettingsTSMI_Click(object sender, System.EventArgs e)
+        {
+            SettingsForm.ShowForm();
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            LogoutForm.ShowForm();
+            e.Cancel = true;
+        }
+
+        private void PickerTimer_Tick(object sender, System.EventArgs e)
+        {
+            CurrentTemperatureLabel.Text = (new Random().Next()%100).ToString(); 
+            DateStatusLabel.Text = DateTime.Now.ToShortDateString();
+            TimeStatusLabel.Text = DateTime.Now.ToLongTimeString();
         }
     }
 }
