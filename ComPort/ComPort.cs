@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using System.IO.Ports;
 
-namespace ComPort
-{
-    public class ComConnect
-    {
-        private List<ushort> _address = new List<ushort>(){ 
+namespace ComPort {
+    public class ComConnect {
+        private List<ushort> _address = new List<ushort>(){
             0x10DA, //Регулируемая температура
             0x1018, //Задание
             0x112E, //Т.Х.С.
@@ -19,8 +17,8 @@ namespace ComPort
         private byte Head = 0xEE;
         private byte ErrorMessage = 0x7A;
         private byte CommandNumber = 4;
-        
-        private SerialPort _comPort;    
+
+        private SerialPort _comPort;
 
         public static string[] GetPortName() {
             string[] PortNames = SerialPort.GetPortNames();
@@ -34,8 +32,7 @@ namespace ComPort
             _comPort.Open();
         }
 
-        public ComConnect(string portName)
-        {
+        public ComConnect(string portName) {
             _comPort = new SerialPort(portName);
             _comPort.Open();
         }
@@ -45,7 +42,7 @@ namespace ComPort
             byte addrl = (byte)address;
             byte addrh = (byte)(address >> 8);
             byte[] request = new byte[]{
-                Head, 
+                Head,
                 (byte)(CommandNumber << 4 | N),
                 addrl,
                 addrh,
@@ -54,13 +51,22 @@ namespace ComPort
             _comPort.Write(request, 0, 5);
         }
 
-        public int ReadData(ushort address)
-        {
-            WriteData(address);
-            int OneByte = _comPort.ReadByte();
-            if (OneByte == 0x7A)
+        public int[] ReadData() {
+            int[] response = new int[3];
+            for (int i = 0; i < 3; i++) {
+                WriteData(_address[i]);
+                response[i] = Read(_address[i]);
+            }
+            return response;
+        }
+
+        private int Read(ushort address) {
+            int oneByte = _comPort.ReadByte();
+            if (oneByte == 0x7A)
                 throw new Exception("Команда не распознана");
-            return _comPort.ReadByte() | (_comPort.ReadByte() << 8);
+            byte datal = (byte)_comPort.ReadByte();
+            byte datah = (byte)(_comPort.ReadByte() << 8);
+            return datal | datah;
         }
 
         public void Close() {

@@ -23,7 +23,7 @@ namespace UI_DataPicker
 
         private void ConfirmBtn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Тип я работаю");
+            Application.ExitThread();
         }
 
         private void CancelBtn_Click(object sender, EventArgs e)

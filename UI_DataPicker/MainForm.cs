@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using ComPort;
+using UI_MiniTerm;
 
 namespace UI_DataPicker
 {
@@ -10,33 +11,6 @@ namespace UI_DataPicker
         {
             InitializeComponent();
             PickerTimer.Start();
-        }
-
-        public int DeviceNumber
-        {
-            set { DeviceNumberLabel.Text = "№ " + value; }
-        }
-
-        public string DeviceName
-        {
-            set { DeviceNameLabel.Text = value; }
-        }
-
-        public string Date
-        {
-            set { DateStatusLabel.Text = value; }
-        }
-
-        public void SetData(string CurrentTemperature, string Temperature2,
-            string TaskTemperature, string txc, string OutputY, string Mode, string Time)
-        {
-            CurrentTemperatureLabel.Text = CurrentTemperature;
-            TaskTemperatureLabel.Text = TaskTemperature;
-            Temperature2Label.Text = Temperature2;
-            TXCLabel.Text = txc;
-            YOutputLabel.Text = OutputY;
-            ModeLabel.Text = Mode;
-            TimeStatusLabel.Text = Time;
         }
 
         private void SettingsTSMI_Click(object sender, System.EventArgs e)
@@ -52,23 +26,22 @@ namespace UI_DataPicker
 
         private void PickerTimer_Tick(object sender, System.EventArgs e)
         {
-
-            try
-            {
-                ComConnect Connection = new ComConnect(ComConnect.GetPortName()[0]);
-                CurrentTemperatureLabel.Text = Connection.ReadData(0x10DA).ToString();
-            }
-            catch (Exception ex)
-            {
+            DateStatusLabel.Text = DateTime.Now.ToShortDateString();
+            TimeStatusLabel.Text = DateTime.Now.ToLongTimeString();
+            PickerTimer.Stop();
+            
+            try {
+                ComConnect Connection = new ComConnect(SettingsDP.settings["COMPortName"],
+                    Convert.ToInt32(SettingsDP.settings["BaudRate"]));
+                int[] response = Connection.ReadData();
+                CurrentTemperatureLabel.Text = response[0].ToString();
+                TaskTemperatureLabel.Text = response[1].ToString();
+                TXCLabel.Text = response[2].ToString();
+            } catch (Exception ex) {
                 PickerTimer.Stop();
                 MessageBox.Show(ex.Message);
             }
-            finally 
-            {
-            }
 
-            DateStatusLabel.Text = DateTime.Now.ToShortDateString();
-            TimeStatusLabel.Text = DateTime.Now.ToLongTimeString();
         }
     }
 }
