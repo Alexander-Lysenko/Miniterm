@@ -37,7 +37,7 @@ namespace UI_DataPicker {
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 Close();
             }
 			BaudRateCB.Text = SettingsDP.BaudRate.ToString();

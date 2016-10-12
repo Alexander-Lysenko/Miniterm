@@ -120,16 +120,91 @@
   <metadata name="Status_Bar.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 3</value>
   </metadata>
+  <metadata name="Status_Bar.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>125, 3</value>
+  </metadata>
+  <metadata name="menuStrip1.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="SettingsTSMI.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAfdEVYdENvcHlyaWdodABST1lBTFRZIEZSRUUgTElD
+        RU5TRSDe2YtpAAAD7klEQVRoQ+3ZiVHjMBSAYe77MPcN4b5BQAOUQAmUQAl0QAkuISWkBJWQElSC9n+M
+        zDjClo84sDuzb+abYFl6RxYSNgz9j389np6eWu7LgYbUQeQu+4vHx8dXtEloBV8bvLvbjQZ5FbqpWh3U
+        H+Th4UGalUTfcC922xoJ8qmseqxp1BtCKWVgAxoZgjwSoVoa1YfgkLq/vzewAX0NwfkyNUTHHakWd3d3
+        CgY2oNYQt7e3ZXJ/cceqhxSCgQ14c9tLxc3NTZmcPdzRekHBV9g819fX2m0tDPYqmKw8AV13vF5Q8BnS
+        aC63NRhXV1cKJut8gOxXLkW9uLy8bMMGFP4LsEfBpM6UYWRol6I3Li4uDLoITsf9GLZA8GeA+y1Ivayz
+        eWTY7N7Oz89fYB1zdnaWuZF7cWpfSPDXDO5/ePuLGOQ/sTTchk0xp6enPQdYi709eQpfo2WPdyYk9wn9
+        Cpq1vpOTE4NXPKOdtSfHq0ubGeSK0M04l+XbE/ktXEJpuCm5b/PHx8cRdMaZLPIEhptP4ujoyDbEoIN3
+        9Awi19DIOuczDFqueYnDw8MP2IZpfA4hj+46a59PnoTyzSfRarVi2Ibpg4MDHlo6tZaliw4+UP8/ShSL
+        YX+YDFnvd/ys2N/fj2FLMhlrVWg013wSe3t7MWwOjTdE6Li1OiRP880nsbu7+76zs2Ng0ZVr9Hx/sh67
+        +1Vpcg2u+bJBI63t7W0DW9GzS/H7sbW1pWBgKzCbm5vVXyoHFdIMpClbgdnY2Ph7hqCZZ9gq1tfXDX5/
+        iLW1tQiaZqSpSjhn8HtDrK6uRtCwfTD4+SFWVlYiaNgUGeaZR+OtF5H9PzfE8vJyBA2bItefr+88Khi3
+        XpbsH/wQEbG0tKRhU+S6582JawXj7pdlSD+4IRYXFyNoitgUuc58Z2VZQZpK7w8iv0HzQywsLETQJJci
+        CbkO/lrAfQVpKn0uiDoGzQ0xPz8fQcOmaBnKbQmGNMN+450vIvv7H2Jubi6Chk2RYUo1n4Q0wznj5Ski
+        ++sPMTs724KGTZHrSs0nwTkF4/KUJfurDzE9Pf02MzNjYFM0ajWfBOcV/LwJWZe67dTa5zr9lB9iamoq
+        5oD1aPTVfBLkUZCm/BqfnyvxGHnrlp4MioeYnJx8Y6McSJPDjf5lknzK5f2qQ+223OPxJb3u38+NiYmJ
+        F9gMlf5oUTZoSJHbeLVC8j+6HB8fVzCwnkb/CukHTeXVzZI9wNjYWAQN6xnIM+8HdRRMqm6e/M9eR0dH
+        Y1jH4MXd+pGgnnJ1kx58xd8JIyMjMTT6fwesEVIXBtYT/uFNx/DwcCMvlXWD+gptWHQQ/Mj+H4yhoT/r
+        PYMRszy5+wAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <metadata name="label1.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="label2.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="label3.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="label4.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="label5.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="label6.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ModeLabel.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="YOutputLabel.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Temperature2Label.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="TXCLabel.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="TaskTemperatureLabel.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="CurrentTemperatureLabel.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="DeviceNameLabel.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="DeviceNumberLabel.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
   </metadata>
   <metadata name="PickerTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>240, 3</value>
   </metadata>
+  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>25</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAYAEBAAAAAAIABoBAAAZgAAACAgAAAAACAAqBAAAM4EAAAwMAAAAAAgAKglAAB2FQAAQEAAAAAA

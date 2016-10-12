@@ -130,7 +130,7 @@
     <None Include="Resources\icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ComPort\ComManager.csproj">
+    <ProjectReference Include="..\ComManager\ComManager.csproj">
       <Project>{84a93a96-b074-4085-b862-7b0c7fe42ff1}</Project>
       <Name>ComManager</Name>
     </ProjectReference>
@@ -144,13 +144,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\11.png" />
+    <None Include="Resources\graphic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\archive.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\settings.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\graphic.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -102,7 +102,7 @@
             // 
             // SettingsTSMI
             // 
-            this.SettingsTSMI.Image = global::UI_MiniTerm.Properties.Resources.settings;
+            this.SettingsTSMI.Image = ((System.Drawing.Image)(resources.GetObject("SettingsTSMI.Image")));
             this.SettingsTSMI.Name = "SettingsTSMI";
             this.SettingsTSMI.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
             this.SettingsTSMI.Size = new System.Drawing.Size(95, 20);
@@ -113,20 +113,25 @@
             // 
             this.GraphicTSMI.Image = global::UI_MiniTerm.Properties.Resources.graphic;
             this.GraphicTSMI.Name = "GraphicTSMI";
+            this.GraphicTSMI.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G)));
             this.GraphicTSMI.Size = new System.Drawing.Size(76, 20);
             this.GraphicTSMI.Text = "График";
+            this.GraphicTSMI.Click += new System.EventHandler(this.GraphicTSMI_Click);
             // 
             // ArchiveTSMI
             // 
+            this.ArchiveTSMI.Image = global::UI_MiniTerm.Properties.Resources.archive;
             this.ArchiveTSMI.Name = "ArchiveTSMI";
-            this.ArchiveTSMI.Size = new System.Drawing.Size(52, 20);
+            this.ArchiveTSMI.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
+            this.ArchiveTSMI.Size = new System.Drawing.Size(68, 20);
             this.ArchiveTSMI.Text = "Архив";
+            this.ArchiveTSMI.Click += new System.EventHandler(this.ArchiveTSMI_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label1.ForeColor = System.Drawing.Color.DimGray;
             this.label1.Location = new System.Drawing.Point(12, 59);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(140, 23);
@@ -138,7 +143,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label2.ForeColor = System.Drawing.Color.DimGray;
             this.label2.Location = new System.Drawing.Point(12, 89);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 23);
@@ -150,7 +155,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label3.ForeColor = System.Drawing.Color.DimGray;
             this.label3.Location = new System.Drawing.Point(12, 119);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(69, 23);
@@ -162,7 +167,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label4.ForeColor = System.Drawing.Color.DimGray;
             this.label4.Location = new System.Drawing.Point(12, 149);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(140, 23);
@@ -174,7 +179,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label5.ForeColor = System.Drawing.Color.DimGray;
             this.label5.Location = new System.Drawing.Point(12, 179);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(81, 23);
@@ -186,7 +191,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label6.ForeColor = System.Drawing.Color.DimGray;
             this.label6.Location = new System.Drawing.Point(12, 209);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(74, 23);

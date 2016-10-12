@@ -63,9 +63,9 @@ namespace UI_MiniTerm.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _11 {
+        internal static System.Drawing.Bitmap archive {
             get {
-                object obj = ResourceManager.GetObject("_11", resourceCulture);
+                object obj = ResourceManager.GetObject("archive", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

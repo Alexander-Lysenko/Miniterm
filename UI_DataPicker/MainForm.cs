@@ -33,9 +33,19 @@ namespace UI_DataPicker {
 				TXCLabel.Text = response[2].ToString();
 			} catch (Exception ex) {
 				PickerTimer.Stop();
-				MessageBox.Show(ex.Message);
+				MessageBox.Show(ex.Message, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 
 		}
+
+        private void GraphicTSMI_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ArchiveTSMI_Click(object sender, EventArgs e)
+        {
+
+        }
 	}
 }

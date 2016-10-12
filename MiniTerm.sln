@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI_Visualizator", "UI_Visua
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI_Archive", "UI_Archive\UI_Archive.csproj", "{3B4B7559-E7D2-41C8-84AA-BFF67D12491D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComManager", "ComPort\ComManager.csproj", "{84A93A96-B074-4085-B862-7B0C7FE42FF1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComManager", "ComManager\ComManager.csproj", "{84A93A96-B074-4085-B862-7B0C7FE42FF1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileManager", "FileManager\FileManager.csproj", "{31273959-E8C5-4462-941A-0EB147838977}"
 EndProject
