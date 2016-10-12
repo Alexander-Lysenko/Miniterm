@@ -30,8 +30,16 @@ namespace UI_DataPicker {
 		private void SettingsForm_Load(object sender, EventArgs e) {
 			DeviceNumberNUD.Value = Convert.ToDecimal(SettingsDP.DeviceNumber);
 			DeviceNameTB.Text = SettingsDP.DeviсeName;
-			ComListCB.Items.AddRange(ComPort.ComConnect.GetPortName());
-			ComListCB.Text = SettingsDP.ComPortName;
+            try
+            {
+                ComListCB.Items.AddRange(ComPort.ComConnect.GetPortName());
+			    ComListCB.Text = SettingsDP.ComPortName;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                Close();
+            }
 			BaudRateCB.Text = SettingsDP.BaudRate.ToString();
 			ArchiveFrequencyCB.Text = SettingsDP.ArchiveFrequency.ToString();
 			SaltPassTB.Text = SettingsDP.SaltPass;

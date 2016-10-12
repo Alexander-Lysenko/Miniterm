@@ -8,10 +8,10 @@ namespace iniManager
     {
         private static string Path = Environment.CurrentDirectory + "//Miniterm.ini"; //Имя файла.
 
-        [DllImport("kernel32")] // Подключаем kernel32.dll и описываем его функцию WritePrivateProfilesString
+        [DllImport("kernel32", EntryPoint="WritePrivateProfileString")] // Подключаем kernel32.dll и описываем его функцию WritePrivateProfilesString
         private static extern long WritePrivateProfileString(string Section, string Key, string Value, string FilePath);
 
-        [DllImport("kernel32")] // Еще раз подключаем kernel32.dll, а теперь описываем функцию GetPrivateProfileString
+        [DllImport("kernel32", EntryPoint = "GetPrivateProfileString")] // Еще раз подключаем kernel32.dll, а теперь описываем функцию GetPrivateProfileString
         private static extern int GetPrivateProfileString(string Section, string Key, string Default, StringBuilder RetVal, int Size, string FilePath);
 
         //Читаем ini-файл и возвращаем значение указного ключа из заданной секции.

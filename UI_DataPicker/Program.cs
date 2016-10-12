@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
 using UI_MiniTerm;
-using iniManager;
 
 namespace UI_DataPicker {
     static class Program {

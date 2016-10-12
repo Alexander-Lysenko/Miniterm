@@ -35,6 +35,8 @@
             this.DateStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.SettingsTSMI = new System.Windows.Forms.ToolStripMenuItem();
+            this.GraphicTSMI = new System.Windows.Forms.ToolStripMenuItem();
+            this.ArchiveTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -88,7 +90,9 @@
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.Transparent;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.SettingsTSMI});
+            this.SettingsTSMI,
+            this.GraphicTSMI,
+            this.ArchiveTSMI});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -98,11 +102,25 @@
             // 
             // SettingsTSMI
             // 
+            this.SettingsTSMI.Image = global::UI_MiniTerm.Properties.Resources.settings;
             this.SettingsTSMI.Name = "SettingsTSMI";
             this.SettingsTSMI.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.SettingsTSMI.Size = new System.Drawing.Size(79, 20);
+            this.SettingsTSMI.Size = new System.Drawing.Size(95, 20);
             this.SettingsTSMI.Text = "Настройки";
             this.SettingsTSMI.Click += new System.EventHandler(this.SettingsTSMI_Click);
+            // 
+            // GraphicTSMI
+            // 
+            this.GraphicTSMI.Image = global::UI_MiniTerm.Properties.Resources.graphic;
+            this.GraphicTSMI.Name = "GraphicTSMI";
+            this.GraphicTSMI.Size = new System.Drawing.Size(76, 20);
+            this.GraphicTSMI.Text = "График";
+            // 
+            // ArchiveTSMI
+            // 
+            this.ArchiveTSMI.Name = "ArchiveTSMI";
+            this.ArchiveTSMI.Size = new System.Drawing.Size(52, 20);
+            this.ArchiveTSMI.Text = "Архив";
             // 
             // label1
             // 
@@ -179,7 +197,7 @@
             // ModeLabel
             // 
             this.ModeLabel.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ModeLabel.ForeColor = System.Drawing.Color.IndianRed;
+            this.ModeLabel.ForeColor = System.Drawing.Color.OrangeRed;
             this.ModeLabel.Location = new System.Drawing.Point(96, 208);
             this.ModeLabel.Name = "ModeLabel";
             this.ModeLabel.Size = new System.Drawing.Size(181, 24);
@@ -200,7 +218,7 @@
             // Temperature2Label
             // 
             this.Temperature2Label.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Temperature2Label.ForeColor = System.Drawing.Color.IndianRed;
+            this.Temperature2Label.ForeColor = System.Drawing.Color.OrangeRed;
             this.Temperature2Label.Location = new System.Drawing.Point(201, 149);
             this.Temperature2Label.Name = "Temperature2Label";
             this.Temperature2Label.Size = new System.Drawing.Size(76, 23);
@@ -211,7 +229,7 @@
             // TXCLabel
             // 
             this.TXCLabel.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TXCLabel.ForeColor = System.Drawing.Color.IndianRed;
+            this.TXCLabel.ForeColor = System.Drawing.Color.OrangeRed;
             this.TXCLabel.Location = new System.Drawing.Point(201, 119);
             this.TXCLabel.Name = "TXCLabel";
             this.TXCLabel.Size = new System.Drawing.Size(76, 23);
@@ -232,7 +250,7 @@
             // CurrentTemperatureLabel
             // 
             this.CurrentTemperatureLabel.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CurrentTemperatureLabel.ForeColor = System.Drawing.Color.IndianRed;
+            this.CurrentTemperatureLabel.ForeColor = System.Drawing.Color.OrangeRed;
             this.CurrentTemperatureLabel.Location = new System.Drawing.Point(201, 59);
             this.CurrentTemperatureLabel.Name = "CurrentTemperatureLabel";
             this.CurrentTemperatureLabel.Size = new System.Drawing.Size(76, 23);
@@ -250,7 +268,7 @@
             this.DeviceNameLabel.Name = "DeviceNameLabel";
             this.DeviceNameLabel.Size = new System.Drawing.Size(206, 25);
             this.DeviceNameLabel.TabIndex = 15;
-            this.DeviceNameLabel.Text = "Печка турецкая";
+            this.DeviceNameLabel.Text = "Печь №15";
             // 
             // DeviceNumberLabel
             // 
@@ -274,7 +292,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.BackColor = System.Drawing.Color.LightBlue;
             this.ClientSize = new System.Drawing.Size(284, 281);
             this.Controls.Add(this.DeviceNameLabel);
             this.Controls.Add(this.DeviceNumberLabel);
@@ -330,6 +348,8 @@
         private System.Windows.Forms.Label DeviceNameLabel;
         private System.Windows.Forms.Label DeviceNumberLabel;
         private System.Windows.Forms.Timer PickerTimer;
+        private System.Windows.Forms.ToolStripMenuItem GraphicTSMI;
+        private System.Windows.Forms.ToolStripMenuItem ArchiveTSMI;
     }
 }
 

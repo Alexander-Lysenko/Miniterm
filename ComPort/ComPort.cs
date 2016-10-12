@@ -24,7 +24,7 @@ namespace ComPort {
             string[] PortNames = SerialPort.GetPortNames();
             if (PortNames.Length != 0)
                 return PortNames;
-            throw new ArgumentNullException("На вашем устройстве нет COM порта");
+            throw new Exception("На вашем устройстве нет COM порта");
         }
 
         public ComConnect(string portName, int baudRate) {
