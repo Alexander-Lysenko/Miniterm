@@ -14,9 +14,9 @@ namespace ComPort {
 
         };
 
-        private byte Head = 0xEE;
-        private byte ErrorMessage = 0x7A;
-        private byte CommandNumber = 4;
+        private byte _head = 0xEE;
+        private byte _errorMessage = 0x7A;
+        private byte _commandNumber = 4;
 
         private SerialPort _comPort;
 
@@ -32,18 +32,13 @@ namespace ComPort {
             _comPort.Open();
         }
 
-        public ComConnect(string portName) {
-            _comPort = new SerialPort(portName);
-            _comPort.Open();
-        }
-
-        private void WriteData(ushort address) {
-            byte N = 0; /*Номер прибора*/
+        private void WriteData(ushort address, byte DeviceNumber) {
+           // byte N = 0; /*Номер прибора*/
             byte addrl = (byte)address;
             byte addrh = (byte)(address >> 8);
-            byte[] request = new byte[]{
-                Head,
-                (byte)(CommandNumber << 4 | N),
+            byte[] request = /*new byte[]*/{
+                _head,
+                (byte)(_commandNumber << 4 | DeviceNumber),
                 addrl,
                 addrh,
                 (byte)(addrl + addrh)
@@ -51,16 +46,16 @@ namespace ComPort {
             _comPort.Write(request, 0, 5);
         }
 
-        public int[] ReadData() {
+        public int[] ReadData(byte DeviceNumber) {
             int[] response = new int[3];
             for (int i = 0; i < 3; i++) {
-                WriteData(_address[i]);
-                response[i] = Read(_address[i]);
+                WriteData(_address[i], DeviceNumber);
+                response[i] = Read();
             }
             return response;
         }
 
-        private int Read(ushort address) {
+        private int Read() {
             int oneByte = _comPort.ReadByte();
             if (oneByte == 0x7A)
                 throw new Exception("Команда не распознана");
