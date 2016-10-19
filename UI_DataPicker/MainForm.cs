@@ -24,17 +24,17 @@ namespace UI_DataPicker {
 			TimeStatusLabel.Text = DateTime.Now.ToLongTimeString();
 			PickerTimer.Stop();
 
-			try {
-				ComConnect connection = new ComConnect(SettingsDP.ComPortName,
-					Convert.ToInt32(SettingsDP.BaudRate));
-				int[] response = connection.ReadData(SettingsDP.DeviceNumber);
-				CurrentTemperatureLabel.Text = response[0].ToString();
-				TaskTemperatureLabel.Text = response[1].ToString();
-				TXCLabel.Text = response[2].ToString();
-			} catch (Exception ex) {
-				PickerTimer.Stop();
-				MessageBox.Show(ex.Message, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
-			}
+			//try {
+			//	ComConnect connection = new ComConnect(SettingsDP.ComPortName,
+			//		Convert.ToInt32(SettingsDP.BaudRate));
+			//	int[] response = connection.ReadData(SettingsDP.DeviceNumber);
+			//	CurrentTemperatureLabel.Text = response[0].ToString();
+			//	TaskTemperatureLabel.Text = response[1].ToString();
+			//	TXCLabel.Text = response[2].ToString();
+			//} catch (Exception ex) {
+			//	PickerTimer.Stop();
+			//	MessageBox.Show(ex.Message, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			//}
 
 		}
 
