@@ -131,9 +131,9 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label5.Location = new System.Drawing.Point(12, 120);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(172, 18);
+            this.label5.Size = new System.Drawing.Size(188, 18);
             this.label5.TabIndex = 7;
-            this.label5.Text = "Частота записи в архив";
+            this.label5.Text = "Частота опроса датчиков";
             // 
             // label6
             // 
@@ -175,8 +175,7 @@
             "2",
             "5",
             "10",
-            "30",
-            "60"});
+            "30"});
             this.ArchiveFrequencyCB.Location = new System.Drawing.Point(205, 119);
             this.ArchiveFrequencyCB.Name = "ArchiveFrequencyCB";
             this.ArchiveFrequencyCB.Size = new System.Drawing.Size(55, 24);

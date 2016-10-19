@@ -4,13 +4,11 @@ using UI_MiniTerm;
 
 namespace UI_DataPicker {
 	public partial class SettingsForm : Form {
-		public SettingsForm() {
+		public SettingsForm(MainForm mainForm) {
 			InitializeComponent();
+            _mainForm = mainForm;
 		}
-		public static void ShowForm() {
-			SettingsForm settingsForm = new SettingsForm();
-			settingsForm.ShowDialog();
-		}
+        MainForm _mainForm;
 
 		private void ExitBtn_Click(object sender, EventArgs e) {
 
@@ -24,22 +22,23 @@ namespace UI_DataPicker {
 			SettingsDP.ArchiveFrequency = int.Parse(ArchiveFrequencyCB.Text);
 			SettingsDP.SaltPass = SaltPassTB.Text;
 			SettingsDP.Save();
+            _mainForm.RefreshFormData();
 			Close();
 		}
 
 		private void SettingsForm_Load(object sender, EventArgs e) {
-			DeviceNumberNUD.Value = Convert.ToDecimal(SettingsDP.DeviceNumber);
+            //try
+            //{
+            //    ComListCB.Items.AddRange(ComPort.ComConnect.GetPortName());
+            //    ComListCB.Text = SettingsDP.ComPortName;
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //    Close();
+            //}	
+            DeviceNumberNUD.Value = Convert.ToDecimal(SettingsDP.DeviceNumber);
 			DeviceNameTB.Text = SettingsDP.DeviсeName;
-            try
-            {
-                ComListCB.Items.AddRange(ComPort.ComConnect.GetPortName());
-			    ComListCB.Text = SettingsDP.ComPortName;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                Close();
-            }
 			BaudRateCB.Text = SettingsDP.BaudRate.ToString();
 			ArchiveFrequencyCB.Text = SettingsDP.ArchiveFrequency.ToString();
 			SaltPassTB.Text = SettingsDP.SaltPass;

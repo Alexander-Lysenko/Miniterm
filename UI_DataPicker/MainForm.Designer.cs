@@ -52,6 +52,7 @@
             this.DeviceNameLabel = new System.Windows.Forms.Label();
             this.DeviceNumberLabel = new System.Windows.Forms.Label();
             this.PickerTimer = new System.Windows.Forms.Timer(this.components);
+            this.TimeTimer = new System.Windows.Forms.Timer(this.components);
             this.Status_Bar.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -134,9 +135,9 @@
             this.label1.ForeColor = System.Drawing.Color.DimGray;
             this.label1.Location = new System.Drawing.Point(12, 59);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(140, 23);
+            this.label1.Size = new System.Drawing.Size(124, 23);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Температура 1";
+            this.label1.Text = "Температура";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label2
@@ -174,6 +175,7 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "Температура 2";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label4.Visible = false;
             // 
             // label5
             // 
@@ -186,6 +188,7 @@
             this.label5.TabIndex = 6;
             this.label5.Text = "Выход Y";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label5.Visible = false;
             // 
             // label6
             // 
@@ -219,6 +222,7 @@
             this.YOutputLabel.TabIndex = 12;
             this.YOutputLabel.Text = "000.00";
             this.YOutputLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.YOutputLabel.Visible = false;
             // 
             // Temperature2Label
             // 
@@ -230,6 +234,7 @@
             this.Temperature2Label.TabIndex = 11;
             this.Temperature2Label.Text = "000.00";
             this.Temperature2Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Temperature2Label.Visible = false;
             // 
             // TXCLabel
             // 
@@ -292,6 +297,11 @@
             this.PickerTimer.Interval = 500;
             this.PickerTimer.Tick += new System.EventHandler(this.PickerTimer_Tick);
             // 
+            // TimeTimer
+            // 
+            this.TimeTimer.Interval = 50;
+            this.TimeTimer.Tick += new System.EventHandler(this.TimeTimer_Tick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -322,6 +332,7 @@
             this.Name = "MainForm";
             this.Text = "Минитерм";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.Status_Bar.ResumeLayout(false);
             this.Status_Bar.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -355,6 +366,7 @@
         private System.Windows.Forms.Timer PickerTimer;
         private System.Windows.Forms.ToolStripMenuItem GraphicTSMI;
         private System.Windows.Forms.ToolStripMenuItem ArchiveTSMI;
+        private System.Windows.Forms.Timer TimeTimer;
     }
 }
 
