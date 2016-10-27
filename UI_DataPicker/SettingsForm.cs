@@ -8,11 +8,8 @@ namespace UI_DataPicker {
 			InitializeComponent();
             _mainForm = mainForm;
 		}
-        MainForm _mainForm;
 
-		private void ExitBtn_Click(object sender, EventArgs e) {
-
-		}
+	    private readonly MainForm _mainForm;
 
 		private void SaveBtn_Click(object sender, EventArgs e) {
 			SettingsDP.DeviceNumber = byte.Parse(DeviceNumberNUD.Value.ToString());
@@ -27,16 +24,13 @@ namespace UI_DataPicker {
 		}
 
 		private void SettingsForm_Load(object sender, EventArgs e) {
-            //try
-            //{
-            //    ComListCB.Items.AddRange(ComPort.ComConnect.GetPortName());
-            //    ComListCB.Text = SettingsDP.ComPortName;
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //    Close();
-            //}	
+            try {
+                ComListCB.Items.AddRange(ComPort.ComConnect.GetPortName());
+                ComListCB.Text = SettingsDP.ComPortName;
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message, "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                //Close();
+            }
             DeviceNumberNUD.Value = Convert.ToDecimal(SettingsDP.DeviceNumber);
 			DeviceNameTB.Text = SettingsDP.DeviсeName;
 			BaudRateCB.Text = SettingsDP.BaudRate.ToString();
