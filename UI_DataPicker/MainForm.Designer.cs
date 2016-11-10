@@ -52,7 +52,7 @@
             this.DeviceNameLabel = new System.Windows.Forms.Label();
             this.DeviceNumberLabel = new System.Windows.Forms.Label();
             this.PickerTimer = new System.Windows.Forms.Timer(this.components);
-            this.TimeTimer = new System.Windows.Forms.Timer(this.components);
+            this.Time = new System.Windows.Forms.Timer(this.components);
             this.Status_Bar.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -315,11 +315,11 @@
             this.PickerTimer.Interval = 500;
             this.PickerTimer.Tick += new System.EventHandler(this.PickerTimer_Tick);
             // 
-            // TimeTimer
+            // Time
             // 
-            this.TimeTimer.Enabled = true;
-            this.TimeTimer.Interval = 50;
-            this.TimeTimer.Tick += new System.EventHandler(this.TimeTimer_Tick);
+            this.Time.Enabled = true;
+            this.Time.Interval = 50;
+            this.Time.Tick += new System.EventHandler(this.Time_Tick);
             // 
             // MainForm
             // 
@@ -386,7 +386,7 @@
         private System.Windows.Forms.Timer PickerTimer;
         private System.Windows.Forms.ToolStripMenuItem GraphicTSMI;
         private System.Windows.Forms.ToolStripMenuItem ArchiveTSMI;
-        private System.Windows.Forms.Timer TimeTimer;
+        private System.Windows.Forms.Timer Time;
     }
 }
 

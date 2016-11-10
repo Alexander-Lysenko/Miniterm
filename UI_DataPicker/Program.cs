@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using UI_MiniTerm;
+using SettingsManager;
 
 namespace UI_DataPicker {
     static class Program {
@@ -9,7 +9,7 @@ namespace UI_DataPicker {
         /// </summary>
         [STAThread]
         static void Main() {
-            SettingsDP.Get();
+            SettingsDp.Get();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

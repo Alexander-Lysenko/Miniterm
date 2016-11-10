@@ -2,15 +2,15 @@
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace iniManager {
-	public static class ini {
+namespace SettingsManager {
+	public static class Ini {
 		private static readonly string Path = Environment.CurrentDirectory + "//Miniterm.ini"; //Имя файла.
 
 		[DllImport("kernel32")] // Подключаем kernel32.dll и описываем его функцию WritePrivateProfilesString
-		private static extern long WritePrivateProfileString(string Section, string Key, string Value, string FilePath);
+		private static extern long WritePrivateProfileString(string section, string key, string value, string filePath);
 
 		[DllImport("kernel32")] // Еще раз подключаем kernel32.dll, а теперь описываем функцию GetPrivateProfileString
-		private static extern int GetPrivateProfileString(string Section, string Key, string Default, StringBuilder RetVal, int Size, string FilePath);
+		private static extern int GetPrivateProfileString(string section, string key, string Default, StringBuilder retVal, int size, string filePath);
 
 		//Читаем ini-файл и возвращаем значение указного ключа из заданной секции.
 		private static string ReadKey(string section, string key) {

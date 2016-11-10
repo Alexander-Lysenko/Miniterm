@@ -1,26 +1,28 @@
 ﻿using System;
 using System.Windows.Forms;
 using ComPort;
-using UI_MiniTerm;
+using SettingsManager;
 
 namespace UI_DataPicker {
+
     public partial class MainForm : Form {
         public MainForm() {
             InitializeComponent();
         }
 
-        private ComConnect _connection;
+        private IComConnect _connection;
 
         public void RefreshFormData() {
             try {
-                _connection.Open(SettingsDP.ComPortName, Convert.ToInt32(SettingsDP.BaudRate), SettingsDP.DeviceNumber);
-                DeviceNumberLabel.Text = "№ " + SettingsDP.DeviceNumber;
-                DeviceNameLabel.Text = SettingsDP.DeviсeName;
-                PickerTimer.Interval = SettingsDP.ArchiveFrequency * 1000;
+                _connection.Open(SettingsDp.ComPortName, 
+                    Convert.ToInt32(SettingsDp.BaudRate), SettingsDp.DeviceNumber);
+                _connection.Write();
+                PickerTimer.Interval = SettingsDp.ArchiveFrequency * 1000;
                 PickerTimer.Start();
+                DeviceNumberLabel.Text = "№ " + SettingsDp.DeviceNumber;
+                DeviceNameLabel.Text = SettingsDp.DeviсeName;
             } catch (Exception ex) {
-                PickerTimer.Stop();
-                MessageBox.Show(ex.Message, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorMassager(ex.Message, "Внимание");
             }
         }
 
@@ -37,13 +39,14 @@ namespace UI_DataPicker {
         private void PickerTimer_Tick(object sender, EventArgs e) {
             PickerTimer.Stop();
             try {
+                _connection.Write();
                 int[] response = _connection.Read();
                 CurrentTemperatureLabel.Text = response[0].ToString();
                 TaskTemperatureLabel.Text = response[1].ToString();
                 TXCLabel.Text = response[2].ToString();
+                ModeLabel.Text = response[3].ToString();
             } catch (Exception ex) {
-                PickerTimer.Stop();
-                MessageBox.Show(ex.Message, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorMassager(ex.Message, "Внимание");
             }
 
         }
@@ -60,8 +63,13 @@ namespace UI_DataPicker {
             RefreshFormData();
         }
 
-        private void TimeTimer_Tick(object sender, EventArgs e) {
+        private void Time_Tick(object sender, EventArgs e) {
             TimeStatusLabel.Text = DateTime.Now.ToLongTimeString();
+        }
+
+        private void ErrorMassager(string massage, string caption) {
+            PickerTimer.Stop();
+            MessageBox.Show(massage, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

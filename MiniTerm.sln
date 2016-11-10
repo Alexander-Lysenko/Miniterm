@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI_DataPicker", "UI_DataPicker\UI_DataPicker.csproj", "{FE01C90A-EC12-434C-938F-69D78D9722DF}"
 EndProject
@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComManager", "ComManager\Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileManager", "FileManager\FileManager.csproj", "{31273959-E8C5-4462-941A-0EB147838977}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iniManager", "iniManager\iniManager.csproj", "{AA303BC3-D1B9-4088-A5BE-24957E87CDCA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SettingsManager", "iniManager\SettingsManager.csproj", "{AA303BC3-D1B9-4088-A5BE-24957E87CDCA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
