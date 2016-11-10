@@ -9,7 +9,6 @@ namespace ComPort {
 
         private SerialPort _comPort;
         private Thread _readThread;
-        private Thread _writeThread;
 
         private byte _deviceNumber;
         private int[] _response;
@@ -39,6 +38,8 @@ namespace ComPort {
             _comPort.PortName = portName;
             _comPort.BaudRate = baudRate;
             _comPort.Open();
+            Write();
+            ReadStart();
         }
 
         private void WriteData() {
@@ -59,42 +60,40 @@ namespace ComPort {
         }
 
         public void Write() {
-            _writeThread = new Thread(WriteData);
-            _writeThread.Start();
+            new Thread(WriteData).Start();
         }
 
         public int[] Read() {
-            _response = new int[_address.Count];
-            if (_readThread == null || !_readThread.IsAlive) {
-                _readThread = new Thread(read);
-                _readThread.Start();
+            if (_readThread.Join(new TimeSpan(0, 0, 0, 0, 500))) {
+                ReadStart();
+                var response = _response;
+                _response = new int[_address.Count];
+                return response;
             }
-            if (_readThread.Join(new TimeSpan(0, 0, 0, 0, 500)))
-                return _response;
             throw new Exception("Лимит ожидания превышен");
         }
 
-        private void read() {
-            for (int i = 0; i < _address.Count; i++)
-                _response[i] = ReadData();
+        private void ReadData() {
+            for (int i = 0; i < _address.Count; i++) {
+                int oneByte = _comPort.ReadByte();
+                if (oneByte == 0x7A && oneByte != 0x60)
+                    throw new Exception("Команда не распознана");
+                byte datal = (byte)_comPort.ReadByte();
+                byte datah = (byte)(_comPort.ReadByte() << 8);
+                if (_comPort.ReadByte() != (byte)(datal + datah))
+                    _response[i] = datal | datah;
+                throw new Exception("Контрольная сумма не совпадает");
+            }
         }
 
-        private int ReadData() {
-            int oneByte = _comPort.ReadByte();
-            if (oneByte == 0x7A && oneByte != 0x60)
-                throw new Exception("Команда не распознана");
-            byte datal = (byte)_comPort.ReadByte();
-            byte datah = (byte)(_comPort.ReadByte() << 8);
-            if (_comPort.ReadByte() != (byte)(datal + datah))
-                return datal | datah;
-            throw new Exception("Контрольная сумма не совпадает");
+        private void ReadStart() {
+            _readThread = new Thread(ReadData);
+            _readThread.Start();
         }
 
         public void Close() {
             if (_readThread != null)
                 _readThread.Abort();
-            if (_writeThread != null)
-                _writeThread.Abort();
             if (_comPort != null)
                 _comPort.Close();
         }
