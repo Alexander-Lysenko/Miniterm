@@ -14,21 +14,23 @@ namespace UI_DataPicker {
 
         public void RefreshFormData() {
             try {
-                _connection.Open(SettingsDp.ComPortName, 
-                    Convert.ToInt32(SettingsDp.BaudRate), SettingsDp.DeviceNumber);
+                _connection.Open(Settings.ComPortName,
+                    Convert.ToInt32(Settings.BaudRate), Settings.DeviceNumber);
                 _connection.Write();
-                PickerTimer.Interval = SettingsDp.ArchiveFrequency * 1000;
+                PickerTimer.Interval = Settings.ArchiveFrequency * 1000;
                 PickerTimer.Start();
-                DeviceNumberLabel.Text = "№ " + SettingsDp.DeviceNumber;
-                DeviceNameLabel.Text = SettingsDp.DeviсeName;
             } catch (Exception ex) {
                 ErrorMassager(ex.Message, "Внимание");
+            } finally {
+                DeviceNumberLabel.Text = "№ " + Settings.DeviceNumber;
+                DeviceNameLabel.Text = Settings.DeviсeName;
             }
         }
 
         private void SettingsTSMI_Click(object sender, EventArgs e) {
-            SettingsForm settingsForm = new SettingsForm(this);
+            SettingsForm settingsForm = new SettingsForm();
             settingsForm.ShowDialog();
+            RefreshFormData();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e) {
@@ -37,15 +39,18 @@ namespace UI_DataPicker {
         }
 
         private void PickerTimer_Tick(object sender, EventArgs e) {
-            PickerTimer.Stop();
             try {
                 _connection.Write();
                 int[] response = _connection.Read();
-                CurrentTemperatureLabel.Text = response[0].ToString();
-                TaskTemperatureLabel.Text = response[1].ToString();
-                TXCLabel.Text = response[2].ToString();
-                ModeLabel.Text = response[3].ToString();
+                if (response != null) {
+                    CurrentTemperatureLabel.Text = response[0].ToString();
+                    TaskTemperatureLabel.Text = response[1].ToString();
+                    TXCLabel.Text = response[2].ToString();
+                    ModeLabel.Text = response[3].ToString();
+                }
             } catch (Exception ex) {
+                _connection.Close();
+                PickerTimer.Stop();
                 ErrorMassager(ex.Message, "Внимание");
             }
 
