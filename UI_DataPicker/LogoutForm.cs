@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using ComPort;
-using FileManager;
 using SettingsManager;
 
 namespace UI_DataPicker {
@@ -10,25 +8,19 @@ namespace UI_DataPicker {
             InitializeComponent();
         }
 
-        private IComConnect _connection;
-        private IFileManagerWrite _fileManagerWrite;
+        private bool _t = false;
 
-        public static void ShowForm(IComConnect comConnect, IFileManagerWrite fileManagerWrite) {
+        public static bool ShowForm() {
             LogoutForm logoutForm = new LogoutForm();
-            logoutForm._connection = comConnect;
-            logoutForm._fileManagerWrite = fileManagerWrite;
-            logoutForm.ShowDialog();
             logoutForm.PasswordTB.Focus();
+            logoutForm.ShowDialog();
+            return logoutForm._t;
         }
 
         private void ConfirmBtn_Click(object sender, EventArgs e) {
-            if (PasswordTB.Text != DateTime.Now.Day + Settings.SaltPass) {
-                Close();
-                return;
-            }
-            _connection.Close();
-            _fileManagerWrite.Close();
-            Application.ExitThread();
+            if (PasswordTB.Text == DateTime.Now.Day + Settings.SaltPass) 
+                _t = true;
+            Close();
         }
 
         private void CancelBtn_Click(object sender, EventArgs e) {

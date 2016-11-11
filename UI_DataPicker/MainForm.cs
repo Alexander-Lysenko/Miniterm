@@ -37,7 +37,11 @@ namespace UI_DataPicker {
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e) {
-            LogoutForm.ShowForm(_connection, _fileManagerWrite);
+            if (LogoutForm.ShowForm()) {
+                _connection.Close();
+                _fileManagerWrite.Close();
+                Application.ExitThread();
+            }
             e.Cancel = true;
         }
 
@@ -56,8 +60,7 @@ namespace UI_DataPicker {
             }
         }
 
-        private void FileWrite(object response)
-        {
+        private void FileWrite(object response) {
             string writeText = DateTime.Now.ToLongTimeString() + ";";
             foreach (var s in (int[])response)
                 writeText += s + ";";
