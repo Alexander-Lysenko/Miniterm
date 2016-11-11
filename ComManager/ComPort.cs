@@ -83,7 +83,7 @@ namespace ComPort {
         }
 
         public void Close() {
-            _comPort?.Close();
+            if(_comPort!=null) _comPort.Close();
         }
     }
 }
