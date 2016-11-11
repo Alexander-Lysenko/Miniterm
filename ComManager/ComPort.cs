@@ -94,7 +94,9 @@ namespace ComPort {
         }
 
         public void Close() {
-            new Thread(close).Start();
+            Thread t = new Thread(close);
+            t.Start();
+            t.Join();
         }
 
         private void close() {

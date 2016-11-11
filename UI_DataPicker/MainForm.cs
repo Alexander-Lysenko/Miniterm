@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Threading;
 using System.Windows.Forms;
 using ComPort;
+using FileManager;
 using SettingsManager;
 
 namespace UI_DataPicker {
@@ -11,6 +13,7 @@ namespace UI_DataPicker {
         }
 
         private IComConnect _connection;
+        private IFileManagerWrite _fileManagerWrite;
 
         public void RefreshFormData() {
             try {
@@ -34,7 +37,7 @@ namespace UI_DataPicker {
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e) {
-            LogoutForm.ShowForm();
+            LogoutForm.ShowForm(_connection, _fileManagerWrite);
             e.Cancel = true;
         }
 
@@ -46,11 +49,19 @@ namespace UI_DataPicker {
                 TaskTemperatureLabel.Text = response[1].ToString();
                 TXCLabel.Text = response[2].ToString();
                 ModeLabel.Text = response[3].ToString();
+                new Thread(FileWrite).Start(response);
             } catch (Exception ex) {
                 ErrorMassager(ex.Message, "Внимание");
                 _connection.Close();
             }
+        }
 
+        private void FileWrite(object response)
+        {
+            string writeText = DateTime.Now.ToLongTimeString() + ";";
+            foreach (var s in (int[])response)
+                writeText += s + ";";
+            _fileManagerWrite.Write(writeText);
         }
 
         private void GraphicTSMI_Click(object sender, EventArgs e) {
@@ -62,6 +73,7 @@ namespace UI_DataPicker {
         private void MainForm_Load(object sender, EventArgs e) {
             DateStatusLabel.Text = DateTime.Now.ToShortDateString();
             _connection = new ComConnect();
+            _fileManagerWrite = new FileManagerWrite();
             RefreshFormData();
         }
 
