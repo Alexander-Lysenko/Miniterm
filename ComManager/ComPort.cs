@@ -6,8 +6,8 @@ using System.Threading;
 namespace ComPort {
     public class ComConnect : IComConnect {
         private readonly List<ushort> _address;
+        private readonly SerialPort _comPort;
 
-        private SerialPort _comPort;
         private Thread _readThread;
         private Thread _writeThread;
 
@@ -59,19 +59,19 @@ namespace ComPort {
         }
 
         public void Write() {
-            if (_writeThread == null || !_writeThread.IsAlive) {
-                _writeThread = new Thread(WriteData);
-                _writeThread.Start();
-            }
+            if (_writeThread != null && _writeThread.IsAlive)
+                return;
+            _writeThread = new Thread(WriteData);
+            _writeThread.Start();
         }
 
         public int[] Read() {
-            if (_readThread.Join(new TimeSpan(0, 0, 0, SettingsManager.Settings.ArchiveFrequency/2, 0))) {
-                var response = _response;
-                ReadStart();
-                return response;
-            }
-            throw new Exception("Лимит ожидания превышен");
+            //int minut = SettingsManager.Settings.ArchiveFrequency / 2;
+            if (!_readThread.Join(new TimeSpan(0, 0, 0, 0/*minut*/, 700)))
+                throw new Exception("Лимит ожидания превышен");
+            int[] response = _response;
+            ReadStart();
+            return response;
         }
 
         private void ReadData() {

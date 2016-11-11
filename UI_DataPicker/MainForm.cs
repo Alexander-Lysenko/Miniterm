@@ -42,13 +42,11 @@ namespace UI_DataPicker {
             try {
                 _connection.Write();
                 int[] response = _connection.Read();
-                if (response != null) {
-                    CurrentTemperatureLabel.Text = response[0].ToString();
-                    TaskTemperatureLabel.Text = response[1].ToString();
-                    TXCLabel.Text = response[2].ToString();
-                    ModeLabel.Text = response[3].ToString();
-                }
-            } catch (Exception ex) {  
+                CurrentTemperatureLabel.Text = response[0].ToString();
+                TaskTemperatureLabel.Text = response[1].ToString();
+                TXCLabel.Text = response[2].ToString();
+                ModeLabel.Text = response[3].ToString();
+            } catch (Exception ex) {
                 ErrorMassager(ex.Message, "Внимание");
                 _connection.Close();
             }
