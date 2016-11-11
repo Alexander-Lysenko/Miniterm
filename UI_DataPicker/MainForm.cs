@@ -48,10 +48,9 @@ namespace UI_DataPicker {
                     TXCLabel.Text = response[2].ToString();
                     ModeLabel.Text = response[3].ToString();
                 }
-            } catch (Exception ex) {
-                _connection.Close();
-                PickerTimer.Stop();
+            } catch (Exception ex) {  
                 ErrorMassager(ex.Message, "Внимание");
+                _connection.Close();
             }
 
         }

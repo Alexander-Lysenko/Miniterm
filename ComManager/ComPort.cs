@@ -9,6 +9,7 @@ namespace ComPort {
 
         private SerialPort _comPort;
         private Thread _readThread;
+        private Thread _writeThread;
 
         private byte _deviceNumber;
         private int[] _response;
@@ -21,6 +22,7 @@ namespace ComPort {
         }
 
         public ComConnect() {
+            _comPort = new SerialPort();
             _address = new List<ushort>{
                 0x10DA, //Регулируемая температура
                 0x1018, //Задание
@@ -32,9 +34,6 @@ namespace ComPort {
         public void Open(string portName, int baudRate, byte deviceNumber) {
             Close();
             _deviceNumber = deviceNumber;
-            if (_comPort == null) {
-                _comPort = new SerialPort();
-            }
             _comPort.PortName = portName;
             _comPort.BaudRate = baudRate;
             _comPort.Open();
@@ -60,14 +59,16 @@ namespace ComPort {
         }
 
         public void Write() {
-            new Thread(WriteData).Start();
+            if (_writeThread == null || !_writeThread.IsAlive) {
+                _writeThread = new Thread(WriteData);
+                _writeThread.Start();
+            }
         }
 
         public int[] Read() {
-            if (_readThread.Join(new TimeSpan(0, 0, 0, 0, 500))) {
-                ReadStart();
+            if (_readThread.Join(new TimeSpan(0, 0, 0, SettingsManager.Settings.ArchiveFrequency/2, 0))) {
                 var response = _response;
-                _response = new int[_address.Count];
+                ReadStart();
                 return response;
             }
             throw new Exception("Лимит ожидания превышен");
@@ -87,14 +88,21 @@ namespace ComPort {
         }
 
         private void ReadStart() {
+            _response = new int[_address.Count];
             _readThread = new Thread(ReadData);
             _readThread.Start();
         }
 
         public void Close() {
-            if (_readThread != null)
+            new Thread(close).Start();
+        }
+
+        private void close() {
+            if (_writeThread != null && _writeThread.IsAlive)
+                _writeThread.Abort();
+            if (_readThread != null && _readThread.IsAlive)
                 _readThread.Abort();
-            if (_comPort != null)
+            if (_comPort != null && _comPort.IsOpen)
                 _comPort.Close();
         }
     }
