@@ -4,22 +4,22 @@ using System.IO;
 namespace FileManager {
     public class FileManagerRead : IFileManagerRead {
 
-        public StreamReader File;
+        private readonly StreamReader _file;
 
         public FileManagerRead() {
 
             FileStream fileStream = new FileStream(CreateFolder.Path() + DateTime.Now.ToString("dd.MM.yyyy") + ".csv",
                 FileMode.OpenOrCreate, FileAccess.Read, FileShare.Write);
 
-            File = new StreamReader(fileStream);
+            _file = new StreamReader(fileStream);
         }
 
         public string Read() {
-            return File.ReadLine();
+            return _file.ReadLine();
         }
 
         public void Close() {
-            File.Close();
+            _file.Close();
         }
     }
 }

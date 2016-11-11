@@ -9,7 +9,7 @@ namespace UI_DataPicker {
         /// </summary>
         [STAThread]
         static void Main() {
-            SettingsDp.Get();
+            Settings.Get();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

@@ -4,22 +4,22 @@ using System.IO;
 namespace FileManager {
     public class FileManagerWrite : IFileManagerWrite {
 
-        public StreamWriter File;
+        private readonly StreamWriter _file;
 
         public FileManagerWrite() {
 
             FileStream fileStream = new FileStream(CreateFolder.Path() + DateTime.Now.ToString("dd.MM.yyyy") + ".csv",
                 FileMode.Append, FileAccess.Write, FileShare.Read);
 
-            File = new StreamWriter(fileStream);
+            _file = new StreamWriter(fileStream);
         }
 
         public void Write(string s) {
-            File.WriteLine(s);
+            _file.WriteLine(s);
         }
 
         public void Close() {
-            File.Close();
+            _file.Close();
         }
     }
 }

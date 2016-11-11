@@ -1,29 +1,30 @@
 ﻿using System;
 using System.Windows.Forms;
+using SettingsManager;
 
-namespace UI_DataPicker
-{
-    public partial class LogoutForm : Form
-    {
-        public LogoutForm()
-        {
+namespace UI_DataPicker {
+    public partial class LogoutForm : Form {
+        public LogoutForm() {
             InitializeComponent();
         }
-        public static void ShowForm() 
-        {
+
+        private bool _t = false;
+
+        public static bool ShowForm() {
             LogoutForm logoutForm = new LogoutForm();
-            logoutForm.ShowDialog();
             logoutForm.PasswordTB.Focus();
+            logoutForm.ShowDialog();
+            return logoutForm._t;
         }
 
-        private void ConfirmBtn_Click(object sender, EventArgs e)
-        {
-            Application.ExitThread();
+        private void ConfirmBtn_Click(object sender, EventArgs e) {
+            if (PasswordTB.Text == DateTime.Now.Day + Settings.SaltPass) 
+                _t = true;
+            Close();
         }
 
-        private void CancelBtn_Click(object sender, EventArgs e)
-        {
-            this.Close();
+        private void CancelBtn_Click(object sender, EventArgs e) {
+            Close();
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Threading;
 using System.Windows.Forms;
 using ComPort;
+using FileManager;
 using SettingsManager;
 
 namespace UI_DataPicker {
@@ -11,33 +13,39 @@ namespace UI_DataPicker {
         }
 
         private IComConnect _connection;
+        private IFileManagerWrite _fileManagerWrite;
 
         public void RefreshFormData() {
             try {
-                _connection.Open(SettingsDp.ComPortName, 
-                    Convert.ToInt32(SettingsDp.BaudRate), SettingsDp.DeviceNumber);
+                _connection.Open(Settings.ComPortName,
+                    Convert.ToInt32(Settings.BaudRate), Settings.DeviceNumber);
                 _connection.Write();
-                PickerTimer.Interval = SettingsDp.ArchiveFrequency * 1000;
+                PickerTimer.Interval = Settings.ArchiveFrequency * 1000;
                 PickerTimer.Start();
-                DeviceNumberLabel.Text = "№ " + SettingsDp.DeviceNumber;
-                DeviceNameLabel.Text = SettingsDp.DeviсeName;
             } catch (Exception ex) {
                 ErrorMassager(ex.Message, "Внимание");
+            } finally {
+                DeviceNumberLabel.Text = "№ " + Settings.DeviceNumber;
+                DeviceNameLabel.Text = Settings.DeviсeName;
             }
         }
 
         private void SettingsTSMI_Click(object sender, EventArgs e) {
-            SettingsForm settingsForm = new SettingsForm(this);
+            SettingsForm settingsForm = new SettingsForm();
             settingsForm.ShowDialog();
+            RefreshFormData();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e) {
-            LogoutForm.ShowForm();
+            if (LogoutForm.ShowForm()) {
+                _connection.Close();
+                _fileManagerWrite.Close();
+                Application.ExitThread();
+            }
             e.Cancel = true;
         }
 
         private void PickerTimer_Tick(object sender, EventArgs e) {
-            PickerTimer.Stop();
             try {
                 _connection.Write();
                 int[] response = _connection.Read();
@@ -45,10 +53,18 @@ namespace UI_DataPicker {
                 TaskTemperatureLabel.Text = response[1].ToString();
                 TXCLabel.Text = response[2].ToString();
                 ModeLabel.Text = response[3].ToString();
+                new Thread(FileWrite).Start(response);
             } catch (Exception ex) {
                 ErrorMassager(ex.Message, "Внимание");
+                _connection.Close();
             }
+        }
 
+        private void FileWrite(object response) {
+            string writeText = DateTime.Now.ToLongTimeString() + ";";
+            foreach (var s in (int[])response)
+                writeText += s + ";";
+            _fileManagerWrite.Write(writeText);
         }
 
         private void GraphicTSMI_Click(object sender, EventArgs e) {
@@ -60,6 +76,7 @@ namespace UI_DataPicker {
         private void MainForm_Load(object sender, EventArgs e) {
             DateStatusLabel.Text = DateTime.Now.ToShortDateString();
             _connection = new ComConnect();
+            _fileManagerWrite = new FileManagerWrite();
             RefreshFormData();
         }
 

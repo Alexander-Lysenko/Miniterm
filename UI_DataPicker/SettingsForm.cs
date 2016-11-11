@@ -4,38 +4,34 @@ using SettingsManager;
 
 namespace UI_DataPicker {
 	public partial class SettingsForm : Form {
-		public SettingsForm(MainForm mainForm) {
+		public SettingsForm() {
 			InitializeComponent();
-            _mainForm = mainForm;
 		}
 
-	    private readonly MainForm _mainForm;
-
 		private void SaveBtn_Click(object sender, EventArgs e) {
-			SettingsDp.DeviceNumber = byte.Parse(DeviceNumberNUD.Value.ToString());
-			SettingsDp.DeviсeName = DeviceNameTB.Text;
-			SettingsDp.ComPortName = ComListCB.Text;
-			SettingsDp.BaudRate = int.Parse(BaudRateCB.Text);
-			SettingsDp.ArchiveFrequency = int.Parse(ArchiveFrequencyCB.Text);
-			SettingsDp.SaltPass = SaltPassTB.Text;
-			SettingsDp.Save();
-            _mainForm.RefreshFormData();
+			Settings.DeviceNumber = byte.Parse(DeviceNumberNUD.Value.ToString());
+			Settings.DeviсeName = DeviceNameTB.Text;
+			Settings.ComPortName = ComListCB.Text;
+			Settings.BaudRate = int.Parse(BaudRateCB.Text);
+			Settings.ArchiveFrequency = int.Parse(ArchiveFrequencyCB.Text);
+			Settings.SaltPass = SaltPassTB.Text;
+			Settings.Save();
 			Close();
 		}
 
 		private void SettingsForm_Load(object sender, EventArgs e) {
             try {
                 ComListCB.Items.AddRange(ComPort.ComConnect.GetPortName());
-                ComListCB.Text = SettingsDp.ComPortName;
+                ComListCB.Text = Settings.ComPortName;
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message, "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 
             }
-            DeviceNumberNUD.Value = Convert.ToDecimal(SettingsDp.DeviceNumber);
-			DeviceNameTB.Text = SettingsDp.DeviсeName;
-			BaudRateCB.Text = SettingsDp.BaudRate.ToString();
-			ArchiveFrequencyCB.Text = SettingsDp.ArchiveFrequency.ToString();
-			SaltPassTB.Text = SettingsDp.SaltPass;
+            DeviceNumberNUD.Value = Convert.ToDecimal(Settings.DeviceNumber);
+			DeviceNameTB.Text = Settings.DeviсeName;
+			BaudRateCB.Text = Settings.BaudRate.ToString();
+			ArchiveFrequencyCB.Text = Settings.ArchiveFrequency.ToString();
+			SaltPassTB.Text = Settings.SaltPass;
 		}
 	}
 }
