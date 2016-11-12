@@ -64,7 +64,7 @@ namespace UI_DataPicker {
             string writeText = DateTime.Now.ToLongTimeString() + ";";
             foreach (var s in (int[])response)
                 writeText += s + ";";
-            _fileManagerWrite.Write(writeText);
+            _fileManagerWrite.Write(writeText + "0;0;");
         }
 
         private void GraphicTSMI_Click(object sender, EventArgs e) {

@@ -6,9 +6,9 @@ namespace FileManager {
 
         private readonly StreamReader _file;
 
-        public FileManagerRead() {
+        public FileManagerRead(DateTime date) {
 
-            FileStream fileStream = new FileStream(CreateFolder.Path() + DateTime.Now.ToString("dd.MM.yyyy") + ".csv",
+            FileStream fileStream = new FileStream(CreateFolder.Path() + date.ToString("dd.MM.yyyy") + ".csv",
                 FileMode.OpenOrCreate, FileAccess.Read, FileShare.Write);
 
             _file = new StreamReader(fileStream);
@@ -22,4 +22,4 @@ namespace FileManager {
             _file.Close();
         }
     }
-}
+}s

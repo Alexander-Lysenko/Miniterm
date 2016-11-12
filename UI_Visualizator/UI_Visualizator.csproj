@@ -147,6 +147,10 @@
       <Project>{a6794603-7967-4808-bcbc-6712216d5e1f}</Project>
       <Name>GraphManager</Name>
     </ProjectReference>
+    <ProjectReference Include="..\iniManager\SettingsManager.csproj">
+      <Project>{aa303bc3-d1b9-4088-a5be-24957e87cdca}</Project>
+      <Name>SettingsManager</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
