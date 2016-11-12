@@ -43,11 +43,9 @@ namespace ComPort {
 
         private void WriteData() {
             for (int i = 0; i < _address.Count; i++) {
-                ushort addr = _address[i];
-                byte addrl = (byte)addr;
-                byte addrh = (byte)(addr >> 8);
-                byte[] request =
-                {
+                byte addrl = (byte)_address[i];
+                byte addrh = (byte)(_address[i] >> 8);
+                byte[] request = {
                     0xEE,
                     (byte) (4 << 4 | _deviceNumber),
                     addrl,
@@ -66,8 +64,8 @@ namespace ComPort {
         }
 
         public int[] Read() {
-            //int minut = SettingsManager.Settings.ArchiveFrequency / 2;
-            if (!_readThread.Join(new TimeSpan(0, 0, 0, 0/*minut*/, 700)))
+            int milliseconds = SettingsManager.Settings.ArchiveFrequency * 500;
+            if (!_readThread.Join(new TimeSpan(0, 0, 0, 0, milliseconds)))
                 throw new Exception("Лимит ожидания превышен");
             int[] response = _response;
             ReadStart();
@@ -82,8 +80,8 @@ namespace ComPort {
                 byte datal = (byte)_comPort.ReadByte();
                 byte datah = (byte)(_comPort.ReadByte() << 8);
                 if (_comPort.ReadByte() != (byte)(datal + datah))
-                    _response[i] = datal | datah;
-                throw new Exception("Контрольная сумма не совпадает");
+                    throw new Exception("Контрольная сумма не совпадает");
+                _response[i] = datal | datah;
             }
         }
 
@@ -94,12 +92,12 @@ namespace ComPort {
         }
 
         public void Close() {
-            Thread t = new Thread(close);
+            Thread t = new Thread(CloseThread);
             t.Start();
             t.Join();
         }
 
-        private void close() {
+        private void CloseThread() {
             if (_writeThread != null && _writeThread.IsAlive)
                 _writeThread.Abort();
             if (_readThread != null && _readThread.IsAlive)

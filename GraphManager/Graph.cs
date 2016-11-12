@@ -1,5 +1,4 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using ZedGraph;
 
 namespace GraphManager {
@@ -29,6 +28,26 @@ namespace GraphManager {
             // Щрифт меток
             pane.XAxis.Scale.FontSpec.Size = pane.YAxis.Scale.FontSpec.Size = 8;
 
+            Grid(pane);
+
+            // Подпись осей
+            pane.XAxis.Title.Text = "";
+            pane.YAxis.Title.Text = "Температура, °С";
+            pane.YAxis.Title.FontSpec.Size = 10;
+
+            Legend(pane);
+
+            // Опорные точки выделяться не будут (SymbolType.None)
+            LineItem temperatureLine = pane.AddCurve("Температура", _temperature, Color.Red, SymbolType.None);
+            LineItem taskLine = pane.AddCurve("Задание", _task, Color.Black, SymbolType.None);
+            taskLine.Line.Width = 3;
+            temperatureLine.Line.Width = 2;
+            temperatureLine.Line.Style = System.Drawing.Drawing2D.DashStyle.Solid;
+
+            Update();
+        }
+
+        private void Grid(GraphPane pane) {
             // Включаем отображение сетки по осям
             pane.XAxis.MajorGrid.IsVisible = pane.YAxis.MajorGrid.IsVisible = true;
             pane.XAxis.MinorGrid.IsVisible = pane.YAxis.MinorGrid.IsVisible = true;
@@ -38,13 +57,9 @@ namespace GraphManager {
             pane.XAxis.MajorGrid.DashOff = pane.YAxis.MajorGrid.DashOff = 0;
             pane.XAxis.MinorGrid.DashOn = pane.YAxis.MinorGrid.DashOn = 1;
             pane.XAxis.MinorGrid.DashOff = pane.YAxis.MinorGrid.DashOff = 1;
+        }
 
-            // Подпись осей
-            pane.XAxis.Title.Text = "";
-            pane.YAxis.Title.Text = "Температура, °С";
-            pane.YAxis.Title.FontSpec.Size = 10;
-            pane.Title.Text = "";
-
+        private void Legend(GraphPane pane) {
             // Указываем, что расположение легенды мы будет задавать 
             // в виде координат левого нижнего угла
             pane.Legend.Position = LegendPos.InsideBotLeft;
@@ -56,26 +71,19 @@ namespace GraphManager {
             pane.Legend.Location.AlignH = AlignH.Left;
             pane.Legend.Location.AlignV = AlignV.Bottom;
             pane.Legend.FontSpec.Size = 8;
-
-            // Опорные точки выделяться не будут (SymbolType.None)
-            LineItem temperatureLine = pane.AddCurve("Температура", _temperature, Color.Red, SymbolType.None);
-            LineItem taskLine = pane.AddCurve("Задание", _task, Color.Black, SymbolType.None);
-            taskLine.Line.Width = 3;
-            temperatureLine.Line.Width = 2;
-            temperatureLine.Line.Style = System.Drawing.Drawing2D.DashStyle.Solid;
-
-            // Оьнавляем данные об осях. 
-            _graph.AxisChange();
-
-            // Обновляем график
-            _graph.Invalidate();
         }
 
-        public void Add(XDate dateX, double temperatureY, double taskY){
+        public void Add(XDate dateX, double temperatureY, double taskY) {
             _temperature.Add(dateX, temperatureY);
             _task.Add(dateX, taskY);
+            Update();
+        }
+
+        public void Update() {
             _graph.AxisChange();
             _graph.Invalidate();
         }
+
+
     }
 }
