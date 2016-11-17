@@ -77,6 +77,7 @@
     <Compile Include="FileManagerWrite.cs" />
     <Compile Include="IFileManagerRead.cs" />
     <Compile Include="IFileManagerWrite.cs" />
+    <Compile Include="LogiManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

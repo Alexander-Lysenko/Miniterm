@@ -5,11 +5,10 @@ namespace ComManager
     public interface IComPort
     {
         List<ushort> Address { get; }
-        ushort ReadDataa { get; }
 
         void Close();
         void Open(string portName, int baudRate);
-        void Read();
+        ushort Read();
         void Write(ushort addres, byte deviceNumber);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace ComManager
 {
-    static class Protocol
+    internal static class Protocol
     {
         public static ushort CurrentTemperature;    //Регулируемая температура
         public static ushort TaskTemperature;       //Задание

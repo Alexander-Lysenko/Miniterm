@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using FileManager;
 using System.IO.Ports;
 using System.Threading;
 
@@ -16,8 +17,9 @@ namespace ComManager
                 throw new ArgumentNullException(nameof(_address));
             }
         }
-        public ushort ReadDataa { get; private set; }
 
+        private byte _readData;
+        private Thread _threadRead;
         private readonly SerialPort _comPort;
 
 
@@ -66,26 +68,41 @@ namespace ComManager
             _comPort.Write(request, 0, 5);
         }
 
-        public void Read()
+        public ushort Read()
         {
-            byte oneByte = (byte)_comPort.ReadByte();
+            byte oneByte = ReaByte();
             if (oneByte != 0x60)
                 throw new Exception("Команда не распознана");
-            byte datal = (byte)_comPort.ReadByte();
-            byte datah = (byte)(_comPort.ReadByte() << 8);
-            if (_comPort.ReadByte() != datal + datah)
+            byte datal = ReaByte();
+            byte datah = (byte)(_readData << 8);
+            if (ReaByte() != datal + datah)
                 throw new Exception("Контрольная сумма не совпадает");
-            ReadDataa = (ushort)(datal | datah);
+            return (ushort)(datal | datah);
+        }
+
+        private byte ReaByte()
+        {
+            _threadRead = new Thread(
+                t => {
+                    try
+                    {
+                        _readData = (byte)_comPort.ReadByte();
+                    }
+                    catch (Exception ex)
+                    {
+                        LogiManager.Log(ex.Message);
+                    }
+                });
+            _threadRead.Start();
+            if (!_threadRead.Join(new TimeSpan(0, 0, 0, 0, 500)))
+                throw new Exception("Превышен лимит ожидания");
+            return _readData;
         }
 
         public void Close()
         {
-            var thread = new Thread(t => {
-                if (_comPort != null && _comPort.IsOpen)
-                    _comPort.Close();
-            });
-            thread.Start();
-            thread.Join();
+            _threadRead?.Interrupt();
+            _comPort?.Close();
         }
     }
 }

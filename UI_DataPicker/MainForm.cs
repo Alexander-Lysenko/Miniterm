@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading;
 using System.Windows.Forms;
 using ComManager;
 using FileManager;
@@ -64,19 +63,13 @@ namespace UI_DataPicker
             List<Label> labels = new List<Label>(){
                      CurrentTemperatureLabel, TaskTemperatureLabel, TXCLabel, ModeLabel
             };
+            
             try
             {
                 for (int i = 0; i < _connection.Address.Count; i++)
                 {
                     _connection.Write(_connection.Address[i], Settings.DeviceNumber);
-                    Thread read = new Thread(_connection.Read);
-                    read.Start();
-                    if (!read.Join(new TimeSpan(0, 0, 0, 0, 500)))
-                    {
-                        read.Abort();
-                        throw new Exception("лемит ожжидания привышин");
-                    }
-                    labels[i].Text = _connection.ReadDataa.ToString();
+                    labels[i].Text = _connection.Read().ToString();
                 }
             }
             catch (Exception ex)
@@ -108,6 +101,7 @@ namespace UI_DataPicker
         {
             PickerTimer.Stop();
             MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            LogiManager.Log(message);
         }
     }
 }
