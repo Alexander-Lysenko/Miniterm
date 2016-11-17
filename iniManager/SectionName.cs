@@ -1,6 +1,11 @@
-﻿namespace SettingsManager {
-    public static class SectionName {
+﻿using SettingsManager;
+
+namespace SettingsManager
+{
+    public static class SectionName
+    {
+        public static string MinitermProtocol = "MinitermProtocol";
         public static string DataPicker = "DataPicker";
-        public static string Authorization = "AuthorizationData";
+        public static string AuthorizationData = "AuthorizationData";
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
+using ComManager;
+using FileManager;
 using SettingsManager;
 
 namespace UI_DataPicker {
@@ -9,11 +11,9 @@ namespace UI_DataPicker {
         /// </summary>
         [STAThread]
         static void Main() {
-            Settings.Get();
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            Application.Run(new MainForm(new ComPort(), new FileManagerWrite()));
         }
     }
 }

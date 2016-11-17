@@ -20,12 +20,15 @@ namespace UI_DataPicker {
 		}
 
 		private void SettingsForm_Load(object sender, EventArgs e) {
-            try {
-                ComListCB.Items.AddRange(ComPort.ComConnect.GetPortName());
+            try
+            {
+                ComListCB.Items.AddRange(ComManager.ComPort.GetPortName());
                 ComListCB.Text = Settings.ComPortName;
-            } catch (Exception ex) {
-                MessageBox.Show(ex.Message, "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Предупреждение", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             DeviceNumberNUD.Value = Convert.ToDecimal(Settings.DeviceNumber);
 			DeviceNameTB.Text = Settings.DeviсeName;

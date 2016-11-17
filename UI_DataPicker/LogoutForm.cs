@@ -18,9 +18,15 @@ namespace UI_DataPicker {
         }
 
         private void ConfirmBtn_Click(object sender, EventArgs e) {
-            if (PasswordTB.Text == DateTime.Now.Day + Settings.SaltPass) 
+            if (PasswordTB.Text == DateTime.Now.Day + Settings.SaltPass)
+            {
                 _t = true;
-            Close();
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Неверный пароль", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void CancelBtn_Click(object sender, EventArgs e) {

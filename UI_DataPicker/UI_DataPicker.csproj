@@ -7,7 +7,7 @@
     <ProjectGuid>{FE01C90A-EC12-434C-938F-69D78D9722DF}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UI_MiniTerm</RootNamespace>
+    <RootNamespace>UI_DataPicker</RootNamespace>
     <AssemblyName>Miniterm</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

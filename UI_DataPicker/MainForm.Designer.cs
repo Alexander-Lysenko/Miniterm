@@ -116,7 +116,7 @@
             // 
             // GraphicTSMI
             // 
-            this.GraphicTSMI.Image = global::UI_MiniTerm.Properties.Resources.graphic;
+            this.GraphicTSMI.Image = global::UI_DataPicker.Properties.Resources.graphic;
             this.GraphicTSMI.Name = "GraphicTSMI";
             this.GraphicTSMI.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G)));
             this.GraphicTSMI.Size = new System.Drawing.Size(107, 29);
@@ -125,7 +125,7 @@
             // 
             // ArchiveTSMI
             // 
-            this.ArchiveTSMI.Image = global::UI_MiniTerm.Properties.Resources.archive;
+            this.ArchiveTSMI.Image = global::UI_DataPicker.Properties.Resources.archive;
             this.ArchiveTSMI.Name = "ArchiveTSMI";
             this.ArchiveTSMI.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
             this.ArchiveTSMI.Size = new System.Drawing.Size(99, 29);

@@ -143,6 +143,10 @@
     <Content Include="License-LGPL.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FileManager\FileManager.csproj">
+      <Project>{31273959-e8c5-4462-941a-0eb147838977}</Project>
+      <Name>FileManager</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GraphManager\GraphManager.csproj">
       <Project>{a6794603-7967-4808-bcbc-6712216d5e1f}</Project>
       <Name>GraphManager</Name>
