@@ -9,5 +9,20 @@ namespace UI_Archive
         {
             InitializeComponent();
         }
+
+        void ChooseDataFiles(DateTime today)
+        {
+
+        }
+
+        private void datePicker_ValueChanged(object sender, EventArgs e)
+        {
+            ChooseDataFiles(datePicker.Value);
+        }
+
+        private void settingsBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

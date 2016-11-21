@@ -14,7 +14,7 @@ namespace ComManager
             get {
                 if (_address != null)
                     return _address;
-                throw new ArgumentNullException(nameof(_address));
+                throw new ArgumentNullException(/*nameof(_address)*/);
             }
         }
 
@@ -101,8 +101,8 @@ namespace ComManager
 
         public void Close()
         {
-            _threadRead?.Interrupt();
-            _comPort?.Close();
+            if (_threadRead != null) _threadRead.Interrupt();
+            if (_comPort!=null) _comPort.Close();
         }
     }
 }

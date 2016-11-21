@@ -111,6 +111,9 @@
     <EmbeddedResource Include="DataManagementForm.resx">
       <DependentUpon>DataManagementForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GraphicForm.resx">
+      <DependentUpon>GraphicForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

@@ -13,6 +13,19 @@ namespace UI_Archive
         public AuthorizationForm()
         {
             InitializeComponent();
+            DMF = new DataManagementForm();
+        }
+        DataManagementForm DMF;
+
+        private void loginBtn_Click(object sender, EventArgs e)
+        {
+            DMF.usernameStatusLbl.Text = loginTB.Text;
+            DMF.Show();
+        }
+
+        private void cancelBtn_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("");
         }
     }
 }
