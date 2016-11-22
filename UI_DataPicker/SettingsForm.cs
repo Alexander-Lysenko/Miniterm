@@ -8,7 +8,16 @@ namespace UI_DataPicker {
 			InitializeComponent();
 		}
 
-		private void SaveBtn_Click(object sender, EventArgs e) {
+        private bool _t = false;
+
+        public static bool ShowForm()
+	    {
+            SettingsForm settingsForm = new SettingsForm();
+            settingsForm.ShowDialog();
+            return settingsForm._t;
+	    }
+
+        private void SaveBtn_Click(object sender, EventArgs e) {
 			Settings.DeviceNumber = byte.Parse(DeviceNumberNUD.Value.ToString());
 			Settings.DeviсeName = DeviceNameTB.Text;
 			Settings.ComPortName = ComListCB.Text;
@@ -16,6 +25,7 @@ namespace UI_DataPicker {
 			Settings.ArchiveFrequency = int.Parse(ArchiveFrequencyCB.Text);
 			Settings.SaltPass = SaltPassTB.Text;
 			Settings.Save();
+            _t = true;
 			Close();
 		}
 

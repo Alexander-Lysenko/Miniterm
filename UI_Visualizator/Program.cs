@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using FileManager;
 
 namespace UI_Visualizator
 {
@@ -14,7 +15,7 @@ namespace UI_Visualizator
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Visualizator());
+            Application.Run(new Visualizator(new FileManagerRead(DateTime.Now)));
         }
     }
 }

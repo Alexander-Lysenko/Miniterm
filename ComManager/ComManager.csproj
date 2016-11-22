@@ -77,10 +77,6 @@
     <Compile Include="Protocol.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FileManager\FileManager.csproj">
-      <Project>{31273959-e8c5-4462-941a-0eb147838977}</Project>
-      <Name>FileManager</Name>
-    </ProjectReference>
     <ProjectReference Include="..\iniManager\SettingsManager.csproj">
       <Project>{aa303bc3-d1b9-4088-a5be-24957e87cdca}</Project>
       <Name>SettingsManager</Name>

@@ -42,9 +42,8 @@ namespace UI_DataPicker
 
         private void SettingsTSMI_Click(object sender, EventArgs e)
         {
-            SettingsForm settingsForm = new SettingsForm();
-            settingsForm.ShowDialog();
-            RefreshFormData();
+            if(SettingsForm.ShowForm())
+                RefreshFormData();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -63,7 +62,6 @@ namespace UI_DataPicker
             List<Label> labels = new List<Label>(){
                      CurrentTemperatureLabel, TaskTemperatureLabel, TXCLabel, ModeLabel
             };
-            
             try
             {
                 for (int i = 0; i < _connection.Address.Count; i++)

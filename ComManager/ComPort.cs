@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using FileManager;
 using System.IO.Ports;
 using System.Threading;
 
@@ -18,8 +17,6 @@ namespace ComManager
             }
         }
 
-        private byte _readData;
-        private Thread _threadRead;
         private readonly SerialPort _comPort;
 
 
@@ -74,7 +71,7 @@ namespace ComManager
             if (oneByte != 0x60)
                 throw new Exception("Команда не распознана");
             byte datal = ReaByte();
-            byte datah = (byte)(_readData << 8);
+            byte datah = (byte)(ReaByte() << 8);
             if (ReaByte() != datal + datah)
                 throw new Exception("Контрольная сумма не совпадает");
             return (ushort)(datal | datah);
@@ -82,26 +79,14 @@ namespace ComManager
 
         private byte ReaByte()
         {
-            _threadRead = new Thread(
-                t => {
-                    try
-                    {
-                        _readData = (byte)_comPort.ReadByte();
-                    }
-                    catch (Exception ex)
-                    {
-                        LogiManager.Log(ex.Message);
-                    }
-                });
-            _threadRead.Start();
-            if (!_threadRead.Join(new TimeSpan(0, 0, 0, 0, 500)))
-                throw new Exception("Превышен лимит ожидания");
-            return _readData;
+            Thread.Sleep(250);
+            if (_comPort.BytesToWrite == 0)
+                throw new Exception("Нет ответа от прибора");
+            return  (byte)_comPort.ReadByte();
         }
 
         public void Close()
         {
-            _threadRead?.Interrupt();
             _comPort?.Close();
         }
     }
